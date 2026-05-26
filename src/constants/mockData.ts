@@ -42,13 +42,13 @@ export const PHARMACY_DATA: PharmacyInfo = Object.freeze({
   }
 });
 
-export const HOURS_DATA: BusinessHours[] = Object.freeze([
+export const HOURS_DATA: readonly BusinessHours[] = Object.freeze([
   { weekday: "Lunes a Viernes", open: "08:00", close: "22:00", isNightShift: false },
   { weekday: "Sábados", open: "09:00", close: "20:00", isNightShift: false },
   { weekday: "Domingos y Feriados", open: "00:00", close: "00:00", isNightShift: true }
 ]);
 
-export const SERVICES_DATA: ProfessionalService[] = Object.freeze([
+export const SERVICES_DATA: readonly ProfessionalService[] = Object.freeze([
   {
     id: "1",
     title: "Toma de Presión Arterial",
