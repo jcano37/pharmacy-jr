@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.brand}>
-          <Logo width="auto" height={60} />
+          <Logo width="auto" height={60} variant="light" />
           <p className={styles.description}>
             Comprometidos con su bienestar desde hace más de 20 años.
             Profesionalismo y calidez en cada atención.

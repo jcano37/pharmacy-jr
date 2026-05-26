@@ -17,6 +17,11 @@
   color: var(--color-primary);
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.light .brandName {
+  color: var(--color-white);
 }
 
 .ownerName {
@@ -26,6 +31,11 @@
   color: var(--color-accent);
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  transition: color 0.3s;
+}
+
+.light .ownerName {
+  color: var(--color-accent-light);
 }
 
 @media (max-width: 640px) {
