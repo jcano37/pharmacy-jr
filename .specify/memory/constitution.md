@@ -1,50 +1,55 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report:
+- Version change: Initial -> 1.0.0
+- Modified principles: None (initial fill)
+- Added sections: Core Principles (5), Requisitos Técnicos, Proceso de Desarrollo.
+- Templates requiring updates:
+    - .specify/templates/plan-template.md ✅ updated
+    - .specify/templates/spec-template.md ✅ updated
+    - .specify/templates/tasks-template.md ✅ updated
+- Follow-up TODOs: None
+-->
+
+# Pharmacy Jr Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Arquitectura Estática y Modular
+Todo el sitio debe ser generado de forma estática (SSG) para maximizar la velocidad y seguridad. Los componentes deben ser autocontenidos, documentados y seguir el principio de responsabilidad única. Rationale: Garantiza un mantenimiento sencillo y un despliegue altamente eficiente.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Performance Crítico
+La velocidad es una característica, no un extra. Se requiere un tiempo de carga inicial (LCP) inferior a 1.2 segundos. Las imágenes deben ser optimizadas automáticamente y el código debe estar minificado y dividido (code-splitting). Rationale: El rendimiento es clave para la retención del usuario y el SEO.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Accesibilidad Universal (A11y)
+El sitio debe ser utilizable por todos. Se exige cumplimiento estricto de las pautas WCAG 2.1 Nivel AA. El uso de HTML semántico es obligatorio, asegurando una navegación fluida con lectores de pantalla y teclado. Rationale: La inclusión es un pilar fundamental de nuestra ética de desarrollo y amplia el alcance del producto.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Desarrollo Basado en Pruebas (TDD)
+El ciclo Red-Green-Refactor es mandatorio. Ninguna lógica de negocio o componente crítico puede ser implementado sin antes contar con una prueba automatizada que valide su comportamiento. Rationale: Reduce la deuda técnica y garantiza la estabilidad del producto a largo plazo.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Seguridad y Privacidad
+Se deben implementar cabeceras de seguridad (CSP, HSTS) y minimizar el uso de scripts de terceros. La privacidad del usuario es prioritaria: no se debe recolectar información sensible sin consentimiento explícito. Rationale: Protege tanto al usuario como a la integridad técnica de la aplicación.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Requisitos Técnicos
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### Stack Tecnológico
+- **Frontend**: React.js con TypeScript (Strict Mode).
+- **Herramienta de Construcción**: Vite para un desarrollo rápido y builds optimizados.
+- **Estilos**: CSS nativo o CSS Modules para evitar dependencias externas innecesarias.
+- **Estado**: Hooks nativos de React (useState, useReducer, useContext) por defecto.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+### Estándares de Calidad
+- Puntuación mínima de 90 en todos los apartados de Google Lighthouse (Performance, Accessibility, Best Practices, SEO).
+- Cobertura de pruebas unitarias superior al 80% en lógica de negocio.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+## Proceso de Desarrollo
+
+### Flujo de Trabajo
+1. **Especificación**: Definir la funcionalidad en un Spec.
+2. **TDD Red**: Escribir pruebas que fallen.
+3. **TDD Green**: Implementación mínima para pasar las pruebas.
+4. **Refactor**: Mejorar el código siguiendo principios SOLID y Clean Code.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+Esta Constitución es el documento supremo del proyecto y prevalece sobre cualquier otra práctica. Cualquier desviación de estos principios debe ser discutida, justificada en un Architecture Decision Record (ADR) y aprobada por el equipo, actualizando este documento mediante una nueva versión semántica.
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
-
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2026-05-26 | **Last Amended**: 2026-05-26
