@@ -17,17 +17,18 @@ describe('BusinessHours Component', () => {
   });
 
   it('displays "Abierto" when within business hours', () => {
-    // Mock Monday 10:00 AM (8:00 - 22:00)
+    // Mock Monday 10:00 AM (8:00 - 17:00)
     const date = new Date(2026, 4, 25, 10, 0); // May 25, 2026 is Monday
     vi.setSystemTime(date);
     
     render(<BusinessHours />);
     expect(screen.getAllByText(/abierto/i).length).toBeGreaterThan(0);
+    expect(screen.getByText(/17:00/)).toBeInTheDocument();
   });
 
   it('displays "Cerrado" when outside business hours', () => {
-    // Mock Monday 11:00 PM
-    const date = new Date(2026, 4, 25, 23, 0);
+    // Mock Monday 6:00 PM
+    const date = new Date(2026, 4, 25, 18, 0);
     vi.setSystemTime(date);
     
     render(<BusinessHours />);

@@ -1,52 +1,55 @@
-# Data Model: Landing Page Pharmacy Jr
+# Data Model: Landing Page Farmacia Jiménez Rosales
 
-## Entities & Schemas
+## Entities
 
-### 1. PharmacyInfo (Single Instance)
-Representa los datos fundamentales de la farmacia.
+### PharmacyInfo
+Represents the core information of the pharmacy.
 
-```typescript
-interface PharmacyInfo {
-  name: string;        // "Farmacia Jiménez Rosales"
-  tagline: string;     // "Cuidando tu salud con excelencia"
-  address: {
-    street: string;    // "Av. Principal #123"
-    neighborhood: string; // "Barrio Centro"
-    mapUrl: string;    // Google Maps Embed URL
-  };
-  contact: {
-    phone: string;     // "011-4444-5555"
-    whatsapp: string;  // "+5491122334455"
-    whatsappMsg: string; // Mensaje predefinido
-  };
-}
-```
+| Field | Type | Description | Validation |
+|-------|------|-------------|------------|
+| `name` | string | Commercial name ("Farmacia Jiménez Rosales") | Required |
+| `tagline` | string | Brand slogan | Required |
+| `address` | object | Physical location details | Required |
+| `address.street` | string | Street and building info | Required |
+| `address.neighborhood` | string | Area/Neighborhood name | Required |
+| `address.mapEmbedUrl` | string | Resolved Google Maps embed URL | URL format |
+| `contact` | object | Communication channels | Required |
+| `contact.phone` | string | Public phone number | Phone format |
+| `contact.whatsapp` | string | WhatsApp number (digits only) | Numeric string |
+| `contact.whatsappMsg` | string | Pre-filled message for WhatsApp | Required |
+| `socialMedia` | object | Social media profile links | Optional |
+| `socialMedia.facebook` | string | Facebook profile URL | URL format |
+| `socialMedia.instagram` | string | Instagram profile URL | URL format |
+| `socialMedia.tiktok` | string | TikTok profile URL | URL format |
 
-### 2. BusinessHours
-Horarios de atención estructurados para cálculos de estado (Abierto/Cerrado).
+*Note: The `email` field has been removed as per the business requirements.*
 
-```typescript
-interface BusinessHours {
-  weekday: string;     // "Lunes a Viernes"
-  open: string;        // "08:00"
-  close: string;       // "22:00"
-  isNightShift: boolean; // Indica si está de guardia
-}
-```
+### VisualBranding
+Defines the visual characteristics and assets.
 
-### 3. Service
-Catálogo de servicios profesionales.
+| Field | Type | Description |
+|-------|------|-------------|
+| `primaryColor` | string | Deep Blue (#1e3a8a) |
+| `accentColor` | string | Celeste (#38bdf8) |
+| `backgroundColor` | string | White (#ffffff) |
+| `logoPath` | string | Path to `logo.png` |
+| `storefrontPath` | string | Path to `local.png` |
 
-```typescript
-interface ProfessionalService {
-  id: string;
-  title: string;
-  description: string;
-  iconName: string;    // Mapeado a Lucide Icon name
-}
-```
+### BusinessHours
+Represents the opening and closing times.
 
-## Mock Data Strategy
-- Los datos residirán en `src/constants/mockData.ts`.
-- Se utilizarán constantes congeladas (`Object.freeze`) para asegurar la integridad durante el runtime.
-- **Validación**: Aunque los datos son estáticos, se usarán tipos de TypeScript para asegurar que todos los componentes reciban las props correctas.
+| Field | Type | Description |
+|-------|------|-------------|
+| `weekday` | string | Day range (e.g., "Lunes a Sábado") |
+| `open` | string | Opening time (HH:mm) |
+| `close` | string | Closing time (HH:mm) |
+
+### ProfessionalService
+Represents a service offered by the pharmacy.
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `id` | string | Unique identifier |
+| `title` | string | Service name |
+| `description` | string | Brief explanation of the service |
+| `iconName` | string | Key for Lucide React icon |

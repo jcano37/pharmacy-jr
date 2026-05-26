@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Activity, Syringe, FlaskConical, ClipboardList } from 'lucide-react';
 import { SERVICES_DATA } from '../../constants/mockData';
 import Section from './Section';
@@ -13,6 +14,25 @@ const IconMap: Record<string, React.ReactNode> = {
 };
 
 const Services: React.FC = () => {
+  const gridVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      transition: { duration: 0.5 }
+    }
+  };
+
   return (
     <Section 
       id="servicios" 
@@ -20,16 +40,23 @@ const Services: React.FC = () => {
       subtitle="Ofrecemos atención farmacéutica especializada con el compromiso y la excelencia que usted merece."
       className={styles.services}
     >
-      <div className={styles.grid}>
+      <motion.div 
+        className={styles.grid}
+        variants={gridVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+      >
         {SERVICES_DATA.map((service) => (
-          <ServiceCard
-            key={service.id}
-            title={service.title}
-            description={service.description}
-            icon={IconMap[service.iconName]}
-          />
+          <motion.div key={service.id} variants={itemVariants}>
+            <ServiceCard
+              title={service.title}
+              description={service.description}
+              icon={IconMap[service.iconName]}
+            />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </Section>
   );
 };

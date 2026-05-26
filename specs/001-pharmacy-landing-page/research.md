@@ -1,29 +1,35 @@
-# Research: Landing Page Pharmacy Jr
+# Research: Landing Page Farmacia Jiménez Rosales
 
-## Findings & Decisions
+## Resolved Unknowns
 
-### 1. Logo Strategy (SVG Programmatic)
-- **Decision**: Crear un logotipo minimalista utilizando tipografía elegante (Serif para el nombre, Sans-serif para el rubro) dentro de un componente React que renderice un `<svg>`.
-- **Rationale**: Asegura escalabilidad perfecta y carga instantánea sin requerir peticiones de red adicionales para archivos de imagen.
-- **Alternatives**: Cargar un PNG (rechazado por peso y falta de nitidez en retina displays).
+### 1. Google Maps Embed URL
+- **Unknown**: Official embed URL for `maps.app.goo.gl/cZYS8udQVG17qREr9`.
+- **Findings**: The short link resolves to Farmacia Jiménez Rosales in Managua.
+- **Decision**: Use the following embed URL in `MapWidget.tsx`:
+  `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3900.379844930828!2d-86.2032565851863!3d12.1544430913956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f73fd780dba58cf%3A0x9c6b4234a7fe9b17!2sFarmacia%20Jim%C3%A9nez%20Rosales!5e0!3m2!1sen!2sni!4v1716746600000!5m2!1sen!2sni`
+- **Rationale**: Provides an interactive, brand-aligned map for users to navigate to the pharmacy.
 
-### 2. Map Integration (Google Maps Embed vs Static)
-- **Decision**: Utilizar un `<iframe>` de Google Maps Embed con la dirección física, aplicando filtros CSS de saturación y brillo para lograr el efecto "Muted/Grayscale" elegante.
-- **Rationale**: No requiere API Keys complejas para una landing page simple y permite al usuario interactuar para ver la ruta.
-- **Alternatives**: Google Static Maps API (rechazado porque no permite interacción táctil fluida).
+### 2. Animation Strategy
+- **Decision**: Use `framer-motion` for React animations.
+- **Rationale**: Industry standard for React, declarative, performance-optimized, and supports exit/entrance animations perfectly for an elegant look.
+- **Implementation**:
+  - `motion.section` for fade-in entrance of page segments.
+  - `whileHover` for scale and shadow effects on service cards.
+  - Staggered children animations for lists (Services).
 
-### 3. Color Palette & Typography
-- **Decision**: 
-    - **Primary**: #064E3B (Emerald 900 - Profundo, médico, confiable).
-    - **Accent**: #D4AF37 (Gold - Elegancia, calidad).
-    - **Background**: #F9FAFB (White Smoke - Limpieza).
-    - **Typography**: Playfair Display (Headers) + Inter (Body).
-- **Rationale**: Alineado con el requerimiento de elegancia y modernidad para una farmacia premium.
+### 3. Logo and Branding Layout
+- **Decision**: Combine `logo.png` and the text "Farmacia Jiménez Rosales" using a Flexbox layout in the `Logo` component.
+- **Rationale**: Ensures brand recognition even if the logo asset doesn't contain text, while maintaining high accessibility (ALT text) and SEO (H1/Span presence).
 
-### 4. WhatsApp Deep Linking
-- **Decision**: Usar `https://wa.me/` con `encodeURIComponent` para el mensaje predefinido.
-- **Rationale**: Es el estándar oficial que funciona tanto en móvil como en escritorio.
+### 4. Color Palette Finalization
+- **Decision**: Final palette set to **Celeste (#38bdf8)**, **Deep Blue (#1e3a8a)**, and **White (#ffffff)**.
+- **Rationale**: Communicates hygiene, professionalism, and trust, typical of the healthcare sector.
 
 ## Best Practices
-- **CSS Modules**: Nombrar archivos como `[Component].module.css` para evitar colisiones de estilos globales.
-- **Lazy Loading**: Implementar `React.lazy` para la sección del Mapa para mejorar el LCP inicial.
+
+### 1. React + TypeScript
+- Use `CSS Modules` for scoped styling.
+- Ensure strict typing for animation variants.
+
+### 2. Accessibility & Motion
+- All animations MUST respect the `prefers-reduced-motion` media query (easily handled by Framer Motion's `useReducedMotion` hook).

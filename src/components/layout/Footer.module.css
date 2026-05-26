@@ -26,6 +26,22 @@
   line-height: 1.6;
 }
 
+.social {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.social a {
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.3s, transform 0.3s;
+}
+
+.social a:hover {
+  color: var(--color-accent);
+  transform: translateY(-3px);
+}
+
 .links h3, .contact h3 {
   color: var(--color-accent);
   margin-bottom: 1.5rem;

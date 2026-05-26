@@ -32,14 +32,23 @@
   max-width: 500px;
 }
 
-.imagePlaceholder {
+.imageContainer {
   height: 500px;
   background-color: #f0f0f0;
   border-radius: 20px;
   position: relative;
-  background-image: url('https://images.unsplash.com/photo-1631549916768-4119b2e5f926?auto=format&fit=crop&q=80&w=1000');
-  background-size: cover;
-  background-position: center;
+  overflow: hidden;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.imageContainer:hover .heroImage {
+  transform: scale(1.05);
 }
 
 .overlay {
@@ -83,7 +92,7 @@
     font-size: 2.5rem;
   }
   
-  .imagePlaceholder {
+  .imageContainer {
     height: 350px;
   }
 }

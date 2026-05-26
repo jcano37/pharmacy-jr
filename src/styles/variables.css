@@ -1,35 +1,70 @@
 :root {
-  --color-primary: #064E3B;
-  --color-accent: #D4AF37;
-  --color-bg: #F9FAFB;
-  --color-text-main: #111827;
-  --color-text-light: #6B7280;
-  --color-white: #FFFFFF;
-  
-  --font-serif: 'Playfair Display', serif;
-  --font-sans: 'Inter', sans-serif;
-  
+  /* Colors - Final Palette: Celeste, Blue, White */
+  --color-primary: #1e3a8a; /* Deep Blue (Blue 900) */
+  --color-primary-light: #1e40af; /* Blue 800 */
+  --color-accent: #0ea5e9; /* Celeste (Sky 500) */
+  --color-accent-light: #38bdf8; /* Light Sky (Sky 400) */
+  --color-text: #0f172a; /* Slate 900 */
+  --color-text-light: #475569; /* Slate 600 */
+  --color-white: #ffffff;
+  --color-background: #f8fafc; /* Slate 50 */
+  --color-border: #e2e8f0; /* Slate 200 */
+  --color-whatsapp: #25d366;
+
+  /* Typography */
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Playfair Display', serif;
+
+  /* Layout */
   --max-width: 1200px;
-  --padding-section: 4rem 1.5rem;
-  --border-radius: 8px;
-  --transition-fast: 0.2s ease;
+  --header-height: 80px;
+  --border-radius: 12px;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* Transitions */
+  --transition-base: all 0.3s ease;
 }
 
-* {
+*, *::before, *::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family: var(--font-sans);
-  background-color: var(--color-bg);
-  color: var(--color-text-main);
+  font-family: var(--font-main);
+  color: var(--color-text);
+  background-color: var(--color-background);
   line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-serif);
+  font-family: var(--font-heading);
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-base);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+ul {
+  list-style: none;
 }
 
 img {
@@ -37,13 +72,18 @@ img {
   display: block;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
-button {
-  cursor: pointer;
-  border: none;
-  background: none;
+.section-padding {
+  padding: 5rem 0;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 3rem 0;
+  }
 }

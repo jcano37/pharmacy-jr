@@ -31,7 +31,12 @@
 
 ## Notes
 
-- Se han refinado las estimaciones de contenido para Servicios, Horarios y Ubicación para dar precisión al desarrollo.
-- El estatus de la especificación ha sido actualizado a **Active**.
-- El documento define una identidad visual clara (paleta de colores y estilo) sin entrar en detalles de frameworks CSS.
-- Se ha ajustado la estrategia del mapa y el logotipo para prescindir de activos externos o perfiles de Google Business, optando por soluciones programáticas (SVG/Embed).
+- Actualizado el 26 de mayo para incluir la ubicación exacta en Google Maps y los perfiles de redes sociales.
+- Se ha integrado el uso de la imagen real del local (`src/assets/local.png`) en los requerimientos funcionales (`FR-008`).
+- **Nueva Identidad Visual**: Se ha corregido la paleta de colores a **Azul, Celeste y Blanco** (`FR-009`) para alinearse con los colores reales del negocio.
+- **Logotipo y Nombre**: Se ha añadido el requerimiento `FR-013` para mostrar el nombre de la farmacia junto al logotipo oficial.
+- **Interactividad**: Se ha incluido el requerimiento `FR-014` para añadir animaciones sutiles y profesionales que mejoren la experiencia del usuario.
+- **Canales de Contacto**: Se ha eliminado explícitamente el email (`FR-012`) a petición del negocio.
+- **Identidad en Navegador**: Se ha añadido el requerimiento del favicon utilizando el logo oficial (`FR-011`).
+- Todos los requerimientos actualizados son testeables y están vinculados a escenarios de usuario específicos.
+- No se requieren clarificaciones adicionales por parte del usuario.

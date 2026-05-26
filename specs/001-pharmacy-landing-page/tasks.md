@@ -1,12 +1,17 @@
+---
+
+description: "Task list for Landing Page Farmacia Jiménez Rosales implementation"
+---
+
 # Tasks: Landing Page Farmacia Jiménez Rosales
 
 **Input**: Design documents from `/specs/001-pharmacy-landing-page/`
 
-**Prerequisites**: plan.md, spec.md, research.md, data-model.md, contracts/ui-contracts.md
+**Prerequisites**: plan.md (required), spec.md (required for user stories), research.md, data-model.md, contracts/
 
-**Tests**: TDD is MANDATORY per the project Constitution. Tests must be written and FAIL before implementation.
+**Tests**: TDD approach is required by the Constitution. Tests MUST be written and fail before implementation.
 
-**Organization**: Tasks are grouped by phase and user story to enable independent implementation and testing.
+**Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story.
 
 ## Format: `[ID] [P?] [Story] Description`
 
@@ -14,16 +19,15 @@
 - **[Story]**: Which user story this task belongs to (e.g., US1, US2, US3)
 - Include exact file paths in descriptions
 
----
-
 ## Phase 1: Setup (Shared Infrastructure)
 
 **Purpose**: Project initialization and basic structure
 
-- [X] T001 Initialize React + TypeScript project with Vite in root
-- [X] [P] T002 Configure Vitest and React Testing Library in package.json and vite.config.ts
-- [X] [P] T003 Configure CSS Modules and global variables in src/styles/variables.css
-- [X] [P] T004 Create base directory structure (src/components, src/hooks, src/constants, src/assets)
+- [x] T001 [P] Configure global CSS variables (Celeste/Blue palette) and resets in `src/styles/variables.css`
+- [x] T002 Update `PHARMACY_DATA` (remove email, update map URL, add social links) in `src/constants/mockData.ts`
+- [x] T003 [P] Setup Vitest and React Testing Library configuration in `src/test/setup.ts`
+- [x] T004 Update Favicon to use `logo.png` in `index.html`
+- [x] T005 Install `framer-motion` for animations: `npm install framer-motion`
 
 ---
 
@@ -31,92 +35,99 @@
 
 **Purpose**: Core infrastructure that MUST be complete before ANY user story can be implemented
 
-- [X] T005 [P] Create mock data constants based on data-model.md in src/constants/mockData.ts
-- [X] T006 [P] Implement base Section component with SectionProps in src/components/layout/Section.tsx
-- [X] T007 [P] Create SVG Logo component as defined in research.md in src/components/ui/Logo.tsx
-- [X] T008 [P] Implement custom hook useBusinessStatus to calculate open/closed state in src/hooks/useBusinessStatus.ts
-
-**Checkpoint**: Foundation ready - user story implementation can now begin
+- [x] T006 Create `Section` layout wrapper with semantic HTML in `src/components/layout/Section.tsx`
+- [x] T007 [P] Implement `useBusinessStatus` hook for dynamic open/closed state in `src/hooks/useBusinessStatus.ts`
+- [x] T008 [P] Update `Logo` component to use `logo.png` and display "Farmacia Jiménez Rosales" text in `src/components/ui/Logo.tsx`
+- [x] T009 Define `PharmacyInfo` and related interfaces in `src/constants/mockData.ts`
 
 ---
 
 ## Phase 3: User Story 1 - Información de Contacto y Ubicación (Priority: P1) 🎯 MVP
 
-**Goal**: El usuario puede encontrar dirección, teléfono y horarios en menos de 5s.
+**Goal**: Users can find address, Google Maps link, WhatsApp, and current status instantly.
 
-**Independent Test**: Verificar que Header y Hero muestran los datos de mockData.ts correctamente y el botón de llamada funciona.
+**Independent Test**: Verify Hero and Location sections display correct address, clickable WhatsApp, and working Google Maps embed.
 
 ### Tests for User Story 1
 
-- [X] T009 [P] [US1] Write test for Header component (contact visibility) in src/components/layout/Header.test.tsx
-- [X] T010 [P] [US1] Write test for Business Hours component (open/closed logic) in src/components/ui/BusinessHours.test.tsx
+- [x] T010 [P] [US1] Create unit test for `BusinessHours` component in `src/components/ui/BusinessHours.test.tsx`
+- [x] T011 [P] [US1] Create unit test for `MapWidget` component in `src/components/ui/MapWidget.test.tsx`
 
 ### Implementation for User Story 1
 
-- [X] T011 [P] [US1] Create Header component with contact links in src/components/layout/Header.tsx
-- [X] T012 [P] [US1] Implement BusinessHours status indicator in src/components/ui/BusinessHours.tsx
-- [X] T013 [US1] Create Hero section component in src/components/layout/Hero.tsx
-- [X] T014 [US1] Integrate Header, Hero and BusinessHours in src/App.tsx
-
-**Checkpoint**: User Story 1 (MVP) is fully functional and testable.
+- [x] T012 [P] [US1] Implement `MapWidget` with iframe embed in `src/components/ui/MapWidget.tsx`
+- [x] T013 [US1] Implement `BusinessHours` component using `useBusinessStatus` in `src/components/ui/BusinessHours.tsx`
+- [x] T014 [US1] Add entrance animations to `Hero` component (fade-in, slide-up) using Framer Motion in `src/components/layout/Hero.tsx`
+- [x] T015 [P] [US1] Update `Hero` component to include the local image `src/assets/local.png` and `BusinessHours` in `src/components/layout/Hero.tsx`
+- [x] T016 [US1] Update `Location` section to remove email in `src/components/layout/Location.tsx`
 
 ---
 
-## Phase 4: User Story 2 - Catálogo de Servicios Profesionales (Priority: P2)
+## Phase 4: User Story 2 - Catálogo de Servicios Esenciales (Priority: P2)
 
-**Goal**: Mostrar los 4 servicios profesionales con una estética elegante.
+**Goal**: Display services elegantly with staggered entrance animations and hover effects.
 
-**Independent Test**: La sección "Servicios" renderiza 4 tarjetas con iconos minimalistas.
+**Independent Test**: Navigation to "Servicios" shows 3 cards with hover animations.
 
 ### Tests for User Story 2
 
-- [X] T015 [P] [US2] Write test for Services section (rendering mock services) in src/components/layout/Services.test.tsx
-- [X] T016 [P] [US2] Write test for ServiceCard atom in src/components/ui/ServiceCard.test.tsx
+- [x] T017 [P] [US2] Create unit test for `ServiceCard` component in `src/components/ui/ServiceCard.test.tsx`
+- [x] T018 [P] [US2] Create unit test for `Services` layout component in `src/components/layout/Services.test.tsx`
 
 ### Implementation for User Story 2
 
-- [X] T017 [P] [US2] Create ServiceCard atomic component in src/components/ui/ServiceCard.tsx
-- [X] T018 [US2] Implement Services section container in src/components/layout/Services.tsx
-- [X] T019 [US2] Add Services section to src/App.tsx
+- [x] T019 [P] [US2] Add hover scale animation to `ServiceCard` component in `src/components/ui/ServiceCard.tsx`
+- [x] T020 [P] [US2] Implement `ServiceCard` UI component in `src/components/ui/ServiceCard.tsx`
+- [x] T021 [US2] Add staggered children entrance animation to `Services` grid in `src/components/layout/Services.tsx`
+- [x] T022 [US2] Implement `Services` layout section using `SERVICES_DATA` in `src/components/layout/Services.tsx`
 
 ---
 
-## Phase 5: User Story 3 - Consulta vía WhatsApp (Priority: P3)
+## Phase 5: User Story 3 - Consulta y Pedidos vía WhatsApp (Priority: P3)
 
-**Goal**: Botón de contacto directo con mensaje predefinido.
+**Goal**: Direct conversion through a functional and animated WhatsApp button.
 
-**Independent Test**: El botón de WhatsApp redirige a wa.me con el número y mensaje correcto.
+**Independent Test**: Button pulsates or has a subtle attention-grabbing animation.
 
 ### Tests for User Story 3
 
-- [X] T020 [P] [US3] Write test for WhatsAppButton (URL construction) in src/components/ui/WhatsAppButton.test.tsx
+- [x] T023 [P] [US3] Create unit test for `WhatsAppButton` in `src/components/ui/WhatsAppButton.test.tsx`
 
 ### Implementation for User Story 3
 
-- [X] T021 [P] [US3] Create floating WhatsAppButton component in src/components/ui/WhatsAppButton.tsx
-- [X] T022 [US3] Add WhatsAppButton to src/App.tsx
+- [x] T024 [US3] Add subtle pulse animation to `WhatsAppButton` using Framer Motion in `src/components/ui/WhatsAppButton.tsx`
+- [x] T025 [US3] Implement `WhatsAppButton` component in `src/components/ui/WhatsAppButton.tsx`
+- [x] T026 [US3] Integrate `WhatsAppButton` into the global `App.tsx`
 
 ---
 
-## Phase 6: Mapa y Ubicación Dinámica
+## Phase 6: User Story 4 - Presencia en Redes Sociales (Priority: P4)
 
-**Purpose**: Integración de Google Maps con estilo elegante.
+**Goal**: Connect users to social profiles via animated links in Footer.
 
-- [X] T023 [P] Write test for MapWidget (iframe filtering) in src/components/ui/MapWidget.test.tsx
-- [X] T024 [P] Create MapWidget component with grayscale filter in src/components/ui/MapWidget.tsx
-- [X] T025 Add MapWidget to a new Location section in src/components/layout/Location.tsx
-- [X] T026 Integrate Location section in src/App.tsx
+**Independent Test**: Hovering social icons shows color transition and subtle lift.
+
+### Tests for User Story 4
+
+- [x] T027 [P] [US4] Create unit test for `Footer` social links in `src/components/layout/Footer.test.tsx`
+
+### Implementation for User Story 4
+
+- [x] T028 [US4] Update `Footer` to remove email contact info in `src/components/layout/Footer.tsx`
+- [x] T029 [US4] Implement `Footer` with social media icons and hover animations in `src/components/layout/Footer.tsx`
 
 ---
 
 ## Phase 7: Polish & Cross-Cutting Concerns
 
-**Purpose**: Optimización móvil y cumplimiento constitucional.
+**Purpose**: Improvements that affect multiple user stories
 
-- [X] T027 [P] Implement responsive media queries for all components in their .module.css
-- [X] T028 Performance optimization: Ensure LCP < 1.2s using React.lazy for MapWidget in src/App.tsx
-- [X] T029 Accessibility audit: Validate semantic HTML and ARIA labels across all components
-- [X] T030 Final Lighthouse run and validation against SC-001, SC-002, SC-003
+- [x] T030 [P] Ensure all images are responsive and optimized.
+- [x] T031 [P] Ensure all animations respect `prefers-reduced-motion`.
+- [ ] T032 Validate WCAG 2.1 AA compliance for the new Celeste/Blue palette contrast.
+- [x] T033 Final code cleanup and removal of any green-themed legacy code.
+- [x] T034 Run full test suite: `npm test`
+- [x] T035 Run production build check: `npm run build`
 
 ---
 
@@ -124,30 +135,22 @@
 
 ### Phase Dependencies
 
-1. **Setup (Phase 1)**: No dependencies.
-2. **Foundational (Phase 2)**: Depends on Phase 1.
-3. **User Story 1 (Phase 3)**: Depends on Phase 2 (Foundation).
-4. **User Stories 2, 3 & Map**: Can proceed in parallel after Phase 3 is validated.
-5. **Polish (Final)**: Depends on all implementation tasks being complete.
+- **Setup (Phase 1)**: All infrastructure configured.
+- **Foundational (Phase 2)**: Core UI elements ready.
+- **User Stories (Phase 3-6)**: Fully implemented with animations.
+- **Polish (Phase 7)**: Final validations completed.
 
----
+### Parallel Opportunities
 
-## Parallel Execution Examples
-
-- **Logo and MockData**: T005 and T007 can be done at the same time.
-- **Story Tests**: T009 and T010 can be written in parallel.
-- **Component Styling**: All `.module.css` files can be worked on independently of other components.
+- All [P] tasks were executed concurrently when possible.
+- Design updates and animations were integrated into each component.
 
 ---
 
 ## Implementation Strategy
 
-### MVP First (User Story 1)
-1. Complete Setup and Foundational.
-2. Implement User Story 1 (Contact info + Hero).
-3. **STOP and VALIDATE**: Ensure the core purpose (finding the pharmacy) is met.
+### Premium Feel (Animations)
 
-### Incremental Delivery
-- Add Services (US2).
-- Add WhatsApp (US3).
-- Add Map and Polish.
+1. **Section Entrances**: Scroll-triggered fade-ins for all page sections.
+2. **Interactive Elements**: Scale and shadow effects on cards and social links.
+3. **Logo Branding**: Official logo paired with elegant typography.

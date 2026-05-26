@@ -1,53 +1,85 @@
-# UI Contracts: Landing Page Pharmacy Jr
+# UI Contracts: Landing Page Farmacia Jiménez Rosales
 
-## Component Interfaces
+## Components
 
-### 1. SectionProps (Generic)
-Todos los componentes de sección siguen esta estructura para consistencia visual.
+### Hero (Layout)
+Main entry section with the local image and core brand message. *Enhanced with Framer Motion entrance animations.*
 
-```typescript
-interface SectionProps {
-  id: string;          // Anchor ID para navegación
-  className?: string;  // Para overrides de estilos
-  title?: string;      // Título de la sección
-  subtitle?: string;   // Subtítulo elegante
-}
-```
+**Props**:
+- `info`: `PharmacyInfo`
+- `hours`: `BusinessHours[]`
 
-### 2. ServiceCardProps
-Contrato para el componente de tarjeta de servicios.
+**Animations**:
+- Fade-in and slide-up for title and tagline.
+- Scale-up for hero image.
 
-```typescript
-interface ServiceCardProps {
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-  delay?: number;      // Para animaciones de entrada (Framer Motion o CSS)
-}
-```
+---
 
-### 3. MapWidgetProps
-Contrato para la integración del mapa.
+### Services (Layout)
+Grid displaying the professional services.
 
-```typescript
-interface MapWidgetProps {
-  address: string;
-  embedUrl: string;
-  variant: 'elegant' | 'default'; // 'elegant' aplica el filtro grayscale
-}
-```
+**Props**:
+- `services`: `ProfessionalService[]`
 
-## Styling Contract (CSS Variables)
-El tema se controla mediante variables globales en `src/styles/variables.css`.
+**Animations**:
+- Staggered children entrance for ServiceCards.
 
-```css
-:root {
-  --color-primary: #064E3B;
-  --color-accent: #D4AF37;
-  --color-bg: #F9FAFB;
-  --color-text-main: #111827;
-  --font-serif: 'Playfair Display', serif;
-  --font-sans: 'Inter', sans-serif;
-  --max-width: 1200px;
-}
-```
+---
+
+### Location (Layout)
+Section with contact details and the interactive map.
+
+**Props**:
+- `address`: `PharmacyInfo['address']`
+
+---
+
+### Footer (Layout)
+Bottom section with the official logo, social media links, and copyright.
+
+**Props**:
+- `name`: `string`
+- `socialMedia`: `PharmacyInfo['socialMedia']`
+
+---
+
+### Logo (UI)
+Wrapper for the official logo image (`src/assets/logo.png`) combined with the text "Farmacia Jiménez Rosales".
+
+**Props**:
+- `className?`: `string`
+- `showText?`: `boolean` (Default: true)
+- `width?`: `number | string`
+- `height?`: `number | string`
+
+---
+
+### ServiceCard (UI)
+Display card for a single service. *Enhanced with hover animations.*
+
+**Props**:
+- `title`: `string`
+- `description`: `string`
+- `icon`: `ReactNode`
+
+**Animations**:
+- `whileHover`: Scale (1.05) and elevation shadow.
+
+---
+
+### MapWidget (UI)
+Wrapper for the Google Maps iframe.
+
+**Props**:
+- `embedUrl`: `string`
+- `className?`: `string`
+
+---
+
+### WhatsAppButton (UI)
+Floating or prominent button for direct contact.
+
+**Props**:
+- `number`: `string`
+- `message`: `string`
+- `variant`: `'floating' | 'standard'`

@@ -6,37 +6,39 @@
 
 ## Summary
 
-Desarrollar una landing page moderna y elegante para la "Farmacia Jiménez Rosales" utilizando una arquitectura estática (SSG) con React y Vite. El sitio estará optimizado para dispositivos móviles y se enfocará en la visibilidad inmediata de información de contacto, servicios profesionales y consulta de stock vía WhatsApp, cumpliendo con los estándares de accesibilidad y rendimiento definidos en la Constitución.
+Implement a modern and elegant landing page for "Farmacia Jiménez Rosales" with a refined visual identity and interactive elements. The page will use a Celeste, Blue, and White color palette, replacing the previous green theme. It will feature the official logo combined with the pharmacy name in the header, and the logo will also serve as the browser favicon. Contact methods are restricted to WhatsApp and Phone. Key sections include dynamic business hours, a service catalog with elegant hover effects, and a Google Maps location. Animations (via Framer Motion) will be integrated to provide a premium feel consistent with the medical sector.
 
 ## Technical Context
 
-**Language/Version**: TypeScript 5.x (Strict Mode)
+**Language/Version**: TypeScript 5.x, React 18.x
 
-**Primary Dependencies**: React 18/19, Vite (Build Tool), CSS Modules (Styling), Lucide React (Icons)
+**Primary Dependencies**: React, Lucide React (Icons), Vite (Build tool), CSS Modules, Framer Motion (Animations)
 
-**Storage**: N/A (Mocked data in local constant files)
+**Storage**: N/A (Static Content)
 
-**Testing**: Vitest + React Testing Library (TDD Workflow)
+**Testing**: Vitest, React Testing Library
 
-**Target Platform**: Web (Static Hosting), Optimized for Mobile-First
+**Target Platform**: Modern Web Browsers (Responsive)
 
-**Project Type**: Web Application (Single Page Landing)
+**Project Type**: Web Landing Page
 
-**Performance Goals**: < 1.2s LCP, > 90 Lighthouse score in all categories
+**Performance Goals**: LCP < 1.2s, 90+ Lighthouse score, smooth 60fps animations
 
-**Constraints**: < 200ms interaction latency, WCAG 2.1 AA Compliance
+**Constraints**: Accessible (WCAG 2.1 AA), Elegant/Professional Aesthetic, Strict Palette (Celeste/Blue/White)
 
-**Scale/Scope**: 1 main page with 5-6 sections (Hero, Info, Services, Map, Contact)
+**Scale/Scope**: Single-page application with scroll navigation and entrance animations
 
 ## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-- **Arquitectura Estática**: ✅ Vite generará un build estático optimizado.
-- **Performance Crítico**: ✅ Enfoque en LCP < 1.2s mediante lazy loading de mapa y optimización de assets.
-- **Accesibilidad Universal**: ✅ Uso de HTML semántico y validación ARIA.
-- **TDD Obligatorio**: ✅ Vitest configurado para el ciclo Red-Green-Refactor.
-- **Seguridad y Privacidad**: ✅ Sin trackers externos, solo integración segura de WhatsApp.
+| Principle | Status | Implementation Strategy |
+|-----------|--------|--------------------------|
+| I. Arquitectura Estática | ✅ Pass | Using Vite for static build and component-based modularity. |
+| II. Performance Crítico | ✅ Pass | Optimized image loading and minimal third-party scripts; Framer Motion used sparingly for performance. |
+| III. Accesibilidad | ✅ Pass | Semantic HTML, ARIA labels, and ensuring animations respect `prefers-reduced-motion`. |
+| IV. TDD | ✅ Pass | Core components and logic (hours, map, services) will have unit tests. |
+| V. Seguridad y Privacidad | ✅ Pass | No data collection; external links use `rel="noopener noreferrer"`. |
 
 ## Project Structure
 
@@ -45,31 +47,33 @@ Desarrollar una landing page moderna y elegante para la "Farmacia Jiménez Rosal
 ```text
 specs/001-pharmacy-landing-page/
 ├── plan.md              # This file
-├── research.md          # Phase 0: Logo strategy, Map integration, Color palette
-├── data-model.md        # Phase 1: Mock data schemas (Local, Hours, Services)
-├── quickstart.md        # Phase 1: Dev environment setup
-├── contracts/           # UI Component contracts and Prop types
-└── tasks.md             # Phase 2: Implementation tasks (Next step)
+├── research.md          # Phase 0 output
+├── data-model.md        # Phase 1 output
+├── quickstart.md        # Phase 1 output
+├── checklists/
+│   └── requirements.md  # Spec quality checklist
+├── contracts/
+│   └── ui-contracts.md  # UI component interfaces
+└── tasks.md             # Phase 2 output (generated separately)
 ```
 
 ### Source Code (repository root)
 
 ```text
 src/
-├── assets/              # SVG Logo, optimized images
-├── components/          # UI Components (Header, Hero, Services, Footer)
-│   ├── ui/              # Reusable atoms (Buttons, Cards)
-│   └── layout/          # Section containers
-├── constants/           # Mock data (mockData.ts)
-├── hooks/               # Custom hooks (useStatus, useMap)
-├── styles/              # Global variables and resets
+├── assets/              # Static assets (local.png, logo.png)
+├── components/
+│   ├── layout/          # Page sections (Hero, Services, Location, Footer)
+│   └── ui/              # Reusable components (Button, Map, ServiceCard, Logo)
+├── constants/           # Mock data and configuration
+├── hooks/               # Custom logic (useBusinessStatus)
+├── styles/              # Global variables (Celeste/Blue Palette) and resets
 └── App.tsx              # Main entry point
+index.html               # Favicon configuration
 ```
 
-**Structure Decision**: Option 1 (Single project) was selected as it is a pure frontend landing page without a backend.
+**Structure Decision**: Single React project structure following a feature-based modularity within `components/`.
 
 ## Complexity Tracking
 
-| Violation | Why Needed | Simpler Alternative Rejected Because |
-|-----------|------------|-------------------------------------|
-| N/A | No violations identified | All standards strictly followed |
+*No violations detected.*

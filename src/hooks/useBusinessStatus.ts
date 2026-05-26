@@ -18,15 +18,10 @@ export const useBusinessStatus = (): BusinessStatus => {
 
       // Find relevant schedule
       const todaySchedule = HOURS_DATA.find(h => {
-        if (currentDay.includes('lunes') || currentDay.includes('martes') || 
-            currentDay.includes('miércoles') || currentDay.includes('jueves') || 
-            currentDay.includes('viernes')) {
-          return h.weekday.toLowerCase().includes('lunes a viernes');
+        if (currentDay.includes('domingo')) {
+          return h.weekday.toLowerCase().includes('domingo');
         }
-        if (currentDay.includes('sábado')) {
-          return h.weekday.toLowerCase().includes('sábados');
-        }
-        return h.weekday.toLowerCase().includes('domingos');
+        return h.weekday.toLowerCase().includes('lunes a sábado');
       });
 
       if (!todaySchedule) {
